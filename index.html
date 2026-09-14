@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Agent — Text ⇄ Speech</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <header>
+    <h1>🎙️ Voice Agent</h1>
+    <p class="subtitle">Text-to-Speech &amp; Speech-to-Text, running entirely in your browser</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="tts">Text → Speech</button>
+    <button class="tab-btn" data-tab="stt">Speech → Text</button>
+  </nav>
+
+  <!-- TEXT TO SPEECH -->
+  <section id="tts" class="tab-panel active">
+    <h2>Text to Speech</h2>
+    <textarea id="ttsInput" placeholder="Type or paste text here, then press Speak..."></textarea>
+
+    <div class="controls-row">
+      <label>
+        Voice
+        <select id="voiceSelect"></select>
+      </label>
+      <label>
+        Rate
+        <input type="range" id="rateRange" min="0.5" max="2" step="0.1" value="1">
+        <span id="rateVal">1.0</span>
+      </label>
+      <label>
+        Pitch
+        <input type="range" id="pitchRange" min="0" max="2" step="0.1" value="1">
+        <span id="pitchVal">1.0</span>
+      </label>
+    </div>
+
+    <div class="btn-row">
+      <button id="speakBtn" class="primary-btn">▶ Speak</button>
+      <button id="pauseBtn" class="secondary-btn">⏸ Pause</button>
+      <button id="resumeBtn" class="secondary-btn">⏵ Resume</button>
+      <button id="stopBtn" class="secondary-btn">⏹ Stop</button>
+    </div>
+
+    <p id="ttsStatus" class="status"></p>
+  </section>
+
+  <!-- SPEECH TO TEXT -->
+  <section id="stt" class="tab-panel">
+    <h2>Speech to Text</h2>
+
+    <div class="btn-row">
+      <button id="recordBtn" class="primary-btn">🎤 Start Listening</button>
+      <button id="clearBtn" class="secondary-btn">🗑 Clear</button>
+      <button id="copyBtn" class="secondary-btn">📋 Copy</button>
+    </div>
+
+    <label class="lang-label">
+      Language
+      <select id="sttLang">
+        <option value="en-US">English (US)</option>
+        <option value="en-GB">English (UK)</option>
+        <option value="es-ES">Spanish</option>
+        <option value="fr-FR">French</option>
+        <option value="de-DE">German</option>
+        <option value="hi-IN">Hindi</option>
+        <option value="ar-SA">Arabic</option>
+        <option value="zh-CN">Chinese (Mandarin)</option>
+        <option value="ja-JP">Japanese</option>
+        <option value="pt-BR">Portuguese (Brazil)</option>
+      </select>
+    </label>
+
+    <textarea id="sttOutput" placeholder="Your speech will appear here as text..."></textarea>
+    <p id="sttStatus" class="status"></p>
+  </section>
+
+  <footer>
+    <p>Powered by the Web Speech API — works best in Chrome / Edge. No data leaves your browser.</p>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
